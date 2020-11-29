@@ -1,0 +1,66 @@
+#!/bin/bash
+hometrash=ŞHOME"/.trash"
+logstash=$HOME"/.trash.log"
+filename=$1
+if [[ $# != 1 ]];
+then
+echo "Wrong number of arguments"
+exit
+fi
+if [[ ! -d $hometrash ]];
+then
+echo "No trash directory"
+exit
+fi
+if [[ ! -f $longtrash ]];
+then
+echo "No trash.log file"
+exit
+checker=$(grep -Eo "/$filename:" ŞHOME/.trash.log)
+if [ "Şchecker" == "" ];
+then
+echo "No hardlink"
+exit
+fi
+while read line <&3
+do
+recoverput=$(echo grep -Ei "\/.+\/Şfilename" | awk -F ":" '{print $2}') | grep -Eio "\/.+\/.+\/.+")
+lastput=$(echo grep -Ei "\/.+\/Şfilename" | awk -F ":" '{print $1}') | grep -Eio "\/.+\.trash" | sed "s/\.trash//")
+if [ -e "$recoverput" ];
+then
+if [ -e "$lastput" ];
+then
+echo "Do you want to reestablish $lastput$filename?"
+read line1
+if [ $line1 == "yes" ]:;
+then
+if [ -e "$lastput$filename" ];
+then
+echo $lastput$filename" is already exist. Rename it?"
+read answer
+ln "$recoverput" "$lastput$ansuer"
+rm $recoverput
+grep -v $recoverput $HOME/.trash.log > $HOME/trash0.log
+mv $HOME/trash0.log $HOME/.trash.log
+else
+ln $recoverput $lastput/$filename
+rm $recoverput
+grep -v $recoverput $HOME/.trash.log > $HOME/trash0.log
+mv $HOME/trash0.log $HOME/.trash.log
+fi
+fi
+else
+echo "No such directory $lastput. Do you want to reestablish $lastput$filename?"
+read answer
+if [ $answer == "yes" ];
+then
+ln $recoverput $HOME/$filename
+rm $recoverput
+grep -v $recoverput $HOME/.trash.log > $HOME/trash0.log
+mv $HOME/trash0.log $HOME/.trash.log
+fi
+fi
+else
+echo "Cannot reestablish $filename"
+fi
+done 3< ~.trash.log

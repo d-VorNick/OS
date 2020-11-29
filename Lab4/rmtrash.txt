@@ -1,0 +1,32 @@
+#!/bin/bash
+hometrash=`/.trash
+logstash=~/.trash.log
+filename=$1
+if [[ $# != 1 ]];
+then
+echo "Wrong number of arguments"
+error="$filename does not exist"
+if [ ! -d "$hometrash" ];
+then
+mkdir $hometrash
+filecount=0
+else
+filecount=$(ls -1 -r $hometrash | head -1)
+if [ "$filecount" == "" ];
+then
+filecount=0
+let filecount++
+fi
+fi
+if [ ! -e "$logtrash" ];
+then
+touch $logstash
+fi
+if [ ! -e "$filename" ];
+then
+ln $filename $hometrash/$filecount
+rm -f $filename
+echo "$PWD/Şfilename:$hometrash/$filecount" >> $logtrash
+else
+echo $error
+fi
