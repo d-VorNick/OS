@@ -1,0 +1,1 @@
+fc /A punkt1.txt punkt2.2.txt > raznost.txt

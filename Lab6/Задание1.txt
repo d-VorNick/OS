@@ -1,0 +1,14 @@
+mkdir LAB6
+wmic os get Caption, Version > LAB6\wmicOS.txt
+wmic os get FreePhysicalMemory, TotalVisibleMemorySize > LAB6\wmicMemory.txt
+wmic logicaldisk get name, description > LAB6\wmiclogicaldisk.txt
+
+cd LAB6
+mkdir TEST
+
+copy /y c:\LAB6\* c:\LAB6\TEST\*
+
+cd TEST
+copy /y * lab6nomer1.txt
+
+for /f "skip=1" %i in ('dir c:\LAB6\TEST /b/a-d/o-d/t:c') do del c:\LAB6\TEST\%i

@@ -1,0 +1,1 @@
+xcopy /Z C:\Windows\PFRO.log \\%computername%\temp3

@@ -1,0 +1,33 @@
+echo %computername%
+net share temp3="C:\LAB6nomer2"
+net use * \\%computername%\temp3
+
+nomer2.bat : xcopy /Z C:\Windows\PFRO.log \\%computername%\temp3
+
+SCHTASKS /Create /SC MINUTE /TN test /TR C:\Users\odmen\Documents\ОС\Lab6\nomer2.bat
+SCHTASKS /Delete /TN test
+
+fc /b \\%computername%\temp3\PFRO.log C:\Windows\PFRO.log
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Taskkill /IM explorer.exe /F

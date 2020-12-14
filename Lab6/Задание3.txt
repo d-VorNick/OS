@@ -1,0 +1,16 @@
+net start > c:\LAB6\punkt1.txt
+net stop Dnscache
+TIMEOUT /t 10
+net start > c:\LAB6\punkt2.2.txt
+C:\LAB6\nomer3.1.bat
+net start Dnscache
+
+sc query type=service > c:\LAB6\punkt1.txt
+sc stop Dnscache
+TIMEOUT /t 10
+sc query type=service > c:\LAB6\punkt2.2.txt
+c:\LAB6\nomer3.1.bat
+sc start Dnscashe
+
+
+nomer3.1.bat : fc /A c:\LAB6\punkt1.txt c:\LAB6\punkt2.2.txt > c:\LAB6\raznost.txt
